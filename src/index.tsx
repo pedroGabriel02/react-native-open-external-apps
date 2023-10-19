@@ -59,7 +59,7 @@ const OpenExternalApp = {
     });
   },
 
-  isInstalled: function (bundleId: string): Promise<void> {
+  isInstalled: function (bundleId: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
       if (OpenExternalAppModule) {
         OpenExternalAppModule.isAppInstalled(bundleId)

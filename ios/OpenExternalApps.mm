@@ -4,7 +4,7 @@
 #import <UIKit/UIKit.h>
 
 @implementation OpenExternalApps
-RCT_EXPORT_MODULE()/
+RCT_EXPORT_MODULE()
 + (BOOL)requiresMainQueueSetup
 {
     return YES;
