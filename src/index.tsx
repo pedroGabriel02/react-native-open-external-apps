@@ -18,59 +18,59 @@ const { OpenExternalAppModule } = NativeModules.OpenExternalApps
     );
 
 const OpenExternalApp = {
-  open: function (bundleId) {
+  open: function (bundleId: string): Promise<void> {
     return new Promise((resolve, reject) => {
       if (OpenExternalAppModule) {
         OpenExternalAppModule.openApp(bundleId)
-          .then((result) => {
+          .then((result: any) => {
             if (result === 'Success') {
               resolve(result);
             } else {
               reject(new Error(`Failed to open app: ${result}`));
             }
           })
-          .catch((error) => {
+          .catch((error: any) => {
             reject(error);
           });
       } else {
-        reject(new Error("OpenExternalAppModule not available"));
+        reject(new Error('OpenExternalAppModule not available'));
       }
     });
   },
 
-  openWithToken: function (bundleId, token) {
+  openWithToken: function (bundleId: string, token: string): Promise<void> {
     return new Promise((resolve, reject) => {
       if (OpenExternalAppModule) {
         const tokenData = JSON.stringify(token);
         OpenExternalAppModule.openAppWithToken(bundleId, tokenData)
-          .then((result) => {
+          .then((result: any) => {
             if (result === 'Success') {
               resolve(result);
             } else {
               reject(new Error(`Failed to open app with token: ${result}`));
             }
           })
-          .catch((error) => {
+          .catch((error: any) => {
             reject(error);
           });
       } else {
-        reject(new Error("OpenExternalAppModule not available"));
+        reject(new Error('OpenExternalAppModule not available'));
       }
     });
   },
 
-  isInstalled: function (bundleId) {
+  isInstalled: function (bundleId: string): Promise<void> {
     return new Promise((resolve, reject) => {
       if (OpenExternalAppModule) {
         OpenExternalAppModule.isAppInstalled(bundleId)
-          .then((isInstalled) => {
+          .then((isInstalled: boolean) => {
             resolve(isInstalled);
           })
-          .catch((error) => {
+          .catch((error: any) => {
             reject(error);
           });
       } else {
-        reject(new Error("OpenExternalAppModule not available"));
+        reject(new Error('OpenExternalAppModule not available'));
       }
     });
   },
