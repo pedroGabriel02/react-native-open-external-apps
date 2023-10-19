@@ -63,7 +63,7 @@ const OpenExternalApp = {
     return new Promise((resolve, reject) => {
       if (OpenExternalAppModule) {
         OpenExternalAppModule.isAppInstalled(bundleId)
-          .then((isInstalled: boolean) => {
+          .then((isInstalled: any) => {
             resolve(isInstalled);
           })
           .catch((error: any) => {
